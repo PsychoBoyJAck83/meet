@@ -69,3 +69,7 @@ User selects to show upcoming events
 ### Then
 
 Display a list of upcoming events organized by city
+
+# Use of FaaS
+
+The Meet app leverages serverless functions to drive specific features that necessitate on-demand processing and scalability. For instance, when users filter events by city or indicate the number of events they wish to view, serverless functions take charge of the data processing and filtering operations. Furthermore, serverless technology is harnessed to create and serve the charts for the "View Charts" feature, enabling efficient resource allocation and scaling in response to the prevailing user demand.
