@@ -15,4 +15,9 @@ describe("<App /> component", () => {
   test("renders list of events", () => {
     expect(AppDOM.querySelector("#event-list")).toBeInTheDocument();
   });
+  test("renders number of events input", () => {
+    expect(AppDOM.querySelector("#number-of-events-input")).toBeInTheDocument();
+  });
+
+  //
 });
