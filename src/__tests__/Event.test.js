@@ -47,9 +47,10 @@ const testEvent = {
 describe("<Event /> component", () => {
   let EventComponent;
   beforeEach(() => {
-    EventComponent = render(<Event event={testEvent} />);
+    //EventComponent = render(<Event event={testEvent} />);
   });
   test("showDescription false: Renders all sub-components of Event(not! description)", () => {
+    EventComponent = render(<Event event={testEvent} />);
     expect(
       EventComponent.container.querySelector(".event-summary")
     ).toBeInTheDocument();
@@ -67,6 +68,7 @@ describe("<Event /> component", () => {
     ).not.toBeInTheDocument();
   });
   test("showDescription false: All sub-components of Event have correct inner text", () => {
+    EventComponent = render(<Event event={testEvent} />);
     expect(
       EventComponent.container.querySelector(".event-summary").textContent
     ).toBe(testEvent.summary);
@@ -81,6 +83,7 @@ describe("<Event /> component", () => {
     ).toBe("Show details");
   });
   test("Pressing details-btn toggles event-description", async () => {
+    EventComponent = render(<Event event={testEvent} />);
     const user = userEvent.setup();
     await user.click(EventComponent.container.querySelector(".details-btn"));
     expect(
@@ -92,6 +95,7 @@ describe("<Event /> component", () => {
     ).not.toBeInTheDocument();
   });
   test("When displayed the description element has correct textContent", async () => {
+    EventComponent = render(<Event event={testEvent} />);
     const user = userEvent.setup();
     await user.click(EventComponent.container.querySelector(".details-btn"));
     expect(
@@ -100,6 +104,7 @@ describe("<Event /> component", () => {
   });
 
   test("After details-btn pressed: details-btn changes textContent", async () => {
+    EventComponent = render(<Event event={testEvent} />);
     const user = userEvent.setup();
     await user.click(EventComponent.container.querySelector(".details-btn"));
     expect(
