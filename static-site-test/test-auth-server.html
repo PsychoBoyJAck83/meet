@@ -81,12 +81,16 @@
             code = encodeURIComponent(codeValue.value);
          }
          const getTokenRequest = getToken + "/" + code;
-         fetch(getTokenRequest)
+         console.log("getTokenRequest :" + getTokenRequest + "\n")
+         fetch(getTokenRequest, { mode: "no-cors" })
             .then(function (response) {
                return response.json();
             })
             .then(function (json) {
                accessTokenElement.innerText = JSON.stringify(json);
+            })
+            .catch((error) => {
+               console.log("error of token: " + error);
             });
       };
       const getEvents = document.getElementById("getEvents");
