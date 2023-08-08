@@ -8,7 +8,7 @@ const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
   };
 
   return (
-    <div id="number-of-events-input" data-testid="number-of-events-input">
+    <div id="number-of-events" data-testid="number-of-events">
       <input
         type="text"
         className="input-number-of-events"

@@ -18,7 +18,7 @@ describe("<App /> component", () => {
   });
   test("renders number of events input", () => {
     render(<App />);
-    const inputElement = screen.getByTestId("number-of-events-input");
+    const inputElement = screen.getByTestId("number-of-events");
     expect(inputElement).toBeInTheDocument();
   });
 });
@@ -49,5 +49,17 @@ describe("<App /> integration", () => {
     allRenderedEventItems.forEach((event) => {
       expect(event.textContent).toContain("Berlin, Germany");
     });
+  });
+  test("Renders the number of events specified by the user", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    const NumberOfEventsDOM = screen.getByTestId("number-of-events");
+    const NumberOfEventsInput =
+      within(NumberOfEventsDOM).queryByRole("textbox");
+    await user.type(NumberOfEventsInput, "{backspace}{backspace}5");
+    const EventListDOM = screen.getByTestId("event-list");
+    const allRenderedEventItems =
+      within(EventListDOM).queryAllByRole("listitem");
+    expect(allRenderedEventItems.length).toBe(5);
   });
 });
