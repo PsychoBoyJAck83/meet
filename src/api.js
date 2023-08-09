@@ -36,7 +36,6 @@ const getToken = async (code) => {
   const fetchTokenUrl =
     "https://srmefcmh2i.execute-api.eu-central-1.amazonaws.com/dev/api/token/" +
     encodeCode;
-  console.log(fetchTokenUrl);
   const response = await fetch(
     fetchTokenUrl
     /*"https://srmefcmh2i.execute-api.eu-central-1.amazonaws.com/dev/api/token" +
@@ -66,10 +65,8 @@ export const getEvents = async () => {
   if (window.location.href.startsWith("http://localhost")) return mockData;
 
   const token = await getAccessToken();
-  console.log(token + "\n");
   if (token) {
-    console.log("We should never see that");
-    //removeQuery();
+    removeQuery();
     const url =
       "https://srmefcmh2i.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" +
       "/" +
@@ -87,19 +84,11 @@ export const getAccessToken = async () => {
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
   if (!accessToken || tokenCheck.error) {
-    console.log(
-      "entering in getAccessToken() if (!accessToken || tokenCheck.error) {...}\n"
-    );
     await localStorage.removeItem("access_token");
     const searchParams = new URLSearchParams(window.location.search);
-    console.log("searchParams" + searchParams);
     const code = await searchParams.get("code");
-    console.log("const code = await searchParams.get('code'); :" + code);
-    console.log("decodeURIComponent(code): " + decodeURIComponent(code));
-    //if(decodeURIComponent(code) === code)
 
     if (!code) {
-      console.log("We should never see that");
       const response = await fetch(
         "https://srmefcmh2i.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
       );

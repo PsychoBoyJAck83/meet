@@ -40,7 +40,6 @@ module.exports.getAuthURL = async () => {
 module.exports.getAccessToken = async (event) => {
   // Decode authorization code extracted from the URL query
   const code = decodeURIComponent(`${event.pathParameters.code}`);
-  console.log("code: " + code + "\n");
   return new Promise((resolve, reject) => {
     /**
      *  Exchange authorization code for access token with a “callback” after the exchange,
@@ -49,7 +48,6 @@ module.exports.getAccessToken = async (event) => {
 
     oAuth2Client.getToken(code, (error, response) => {
       if (error) {
-        console.log("error from inside getToken: \n");
         console.dir(error, { depth: 20 });
         return reject(error);
       }
@@ -58,7 +56,6 @@ module.exports.getAccessToken = async (event) => {
   })
     .then((results) => {
       // Respond with OAuth token
-      console.log("results: \n");
       console.dir(results, { depth: 20 });
       return {
         statusCode: 200,
@@ -66,11 +63,10 @@ module.exports.getAccessToken = async (event) => {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Credentials": true,
         },
-        body: JSON.stringify({ results }),
+        body: JSON.stringify(results),
       };
     })
     .catch((error) => {
-      console.log("error: \n");
       console.dir(error, { depth: 20 });
       // Handle error
       return {
