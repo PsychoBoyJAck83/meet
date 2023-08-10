@@ -4,11 +4,12 @@ import { render, within, waitFor, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 const feature = loadFeature("./src/features/filterEventsByCity.feature");
-let AppComponent;
-let CitySearchDOM;
-let CitySearchInput;
-let BerlinGermanySuggestion;
+
 defineFeature(feature, (test) => {
+  let AppComponent;
+  let CitySearchDOM;
+  let CitySearchInput;
+  let BerlinGermanySuggestion;
   test("When user hasn't searched for a city, show upcoming events from all cities.", ({
     given,
     when,
