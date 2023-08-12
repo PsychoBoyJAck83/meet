@@ -29,9 +29,12 @@ describe("<CitySearch /> component", () => {
   });
   test("updates list of suggestions correctly when user types in city textbox", async () => {
     const user = userEvent.setup();
+    const mockPropFunction = jest.fn();
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
-    render(<CitySearch allLocations={allLocations} />);
+    render(
+      <CitySearch allLocations={allLocations} setInfoAlert={mockPropFunction} />
+    );
 
     // user types "Berlin" in city textbox
     const cityTextBox = screen.queryByRole("textbox");
@@ -62,6 +65,7 @@ describe("<CitySearch /> component", () => {
       <CitySearch
         allLocations={allLocations}
         setCurrentCity={mockPropFunction}
+        setInfoAlert={mockPropFunction}
       />
     );
 
