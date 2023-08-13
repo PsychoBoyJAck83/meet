@@ -24,12 +24,13 @@ const App = () => {
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
   };
-  if (navigator.onLine) {
-    setWarningAlert("You are offline. List has been loaded from cache.");
-  } else {
-    setWarningAlert("");
-  }
+
   useEffect(() => {
+    if (navigator.onLine) {
+      setWarningAlert("");
+    } else {
+      setWarningAlert("You are offline. List has been loaded from cache.");
+    }
     fetchData();
   }, [currentCity, currentNOE]);
 
