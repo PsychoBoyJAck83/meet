@@ -1,7 +1,7 @@
 // src/api.js
 
 import mockData from "./mock-data";
-
+import NProgress from "nprogress";
 /**
  *
  * @param {*} events:
@@ -62,20 +62,28 @@ const checkToken = async (accessToken) => {
  * This function will fetch the list of all events
  */
 export const getEvents = async () => {
+  NProgress.start();
   if (window.location.href.startsWith("http://localhost")) return mockData;
-
-  const token = await getAccessToken();
-  if (token) {
-    removeQuery();
-    const url =
-      "https://srmefcmh2i.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" +
-      "/" +
-      token;
-    const response = await fetch(url);
-    const result = await response.json();
-    if (result) {
-      return result.events;
-    } else return null;
+  else if (!navigator.onLine) {
+    const events = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return events ? JSON.parse(events) : [];
+  } else {
+    const token = await getAccessToken();
+    if (token) {
+      removeQuery();
+      const url =
+        "https://srmefcmh2i.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" +
+        "/" +
+        token;
+      const response = await fetch(url);
+      const result = await response.json();
+      if (result) {
+        localStorage.setItem("lastEvents", JSON.stringify(result.events));
+        NProgress.done();
+        return result.events;
+      } else return null;
+    }
   }
 };
 
