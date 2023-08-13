@@ -18,7 +18,12 @@ describe("<Event /> component", () => {
   });
   test("Value of input changes when user types in it", async () => {
     const mockPropFunction = jest.fn();
-    render(<NumberOfEvents setCurrentNOE={mockPropFunction} />);
+    render(
+      <NumberOfEvents
+        setCurrentNOE={mockPropFunction}
+        setErrorAlert={mockPropFunction}
+      />
+    );
 
     const user = userEvent.setup();
     const input = screen.getByRole("textbox");
