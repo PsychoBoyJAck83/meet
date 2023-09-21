@@ -1,75 +1,58 @@
-# Test Scenarios
+# MEET - A Serverless Progressive Web App
 
-## Filter Events by City.
+Explore the MEET app, a serverless, progressive web application that seamlessly connects to the Google Calendar API.
 
-### Given
+## App Link
 
-User has NOT searched for AND has selected a city.
+[https://psychoboyjack83.github.io/meet/](https://psychoboyjack83.github.io/meet/).
 
-### When
+## Objective
 
-User searches for AND selects a city
+Our goal is to build a serverless, progressive web app (MEET) that leverages the Google Calendar API for data retrieval. The key objectives are as follows:
 
-### Then
+- **Serverless**: Enjoy the benefits of serverless architecture, including effortless scalability, constant availability, and zero cost for idle resources.
+- **Progressive Web App (PWA)**: Experience instant loading, offline support, push notifications, the "add to home screen" prompt, responsive design, and cross-platform compatibility.
 
-A list of events in the selected city will be displayed
+## Technologies Used
 
-## Show/hide event details.
+Technology stack includes:
 
-### Given
+- React
+- Test-Driven Development (TDD)
+- Google Calendar API
+- OAuth2 authentication flow
+- AWS Lambda (for serverless functions)
+- Authorization server
+- React Axios with async/await
+- An alert system implemented using an object-oriented programming (OOP) approach
 
-A list of events OR details of a single event has been displayed
+## Key Features
 
-### When
+Discover the app's core features:
 
-User clicks on the event OR event details
+- Filter events by city
+- Toggle event details visibility
+- Specify the number of events
+- Seamless offline usage
+- Add the app to your device's home screen
+- Visualize upcoming events by city with an interactive chart
 
-### Then
+## Technical Requirements
 
-App will toggle between showing details of the event or hiding the details of the event
+To ensure the highest quality and performance, the app adheres to these technical requirements:
 
-## Choose the amount of events displayed at a given time
-
-### Given
-
-A list of events has been displayed
-
-### When
-
-User selects an amount of events to be displayed
-
-### Then
-
-App will display the chosen amount of events only
-
-## Use App offline
-
-### Given
-
-A list of events has been displayed last time user was online
-
-### When
-
-User uses app offline and wants to see the last generated event list
-
-### Then
-
-Display a list of events
-
-## Display upcoming events organized by city
-
-### Given
-
-User is in main view of app
-
-### When
-
-User selects to show upcoming events
-
-### Then
-
-Display a list of upcoming events organized by city
-
-# Use of FaaS
-
-The Meet app leverages serverless functions to drive specific features that necessitate on-demand processing and scalability. For instance, when users filter events by city or indicate the number of events they wish to view, serverless functions take charge of the data processing and filtering operations. Furthermore, serverless technology is harnessed to create and serve the charts for the "View Charts" feature, enabling efficient resource allocation and scaling in response to the prevailing user demand.
+- Developed using React
+- Built with Test-Driven Development (TDD) methodology
+- Utilizes Google Calendar API and OAuth2 authentication flow
+- Employs serverless functions (preferably AWS Lambda) for the authorization server
+- Hosted on GitHub for transparent code management
+- Cross-browser compatibility (Chrome, Firefox, Safari, Edge, Opera, and IE11)
+- Responsive design for all screen sizes (from 320px to 1920px)
+- Passes Lighthouse's Progressive Web App (PWA) checklist
+- Works offline and gracefully handles slow network conditions with a service worker
+- Supports desktop installation and mobile home screen addition
+- Utilizes React Axios and async/await for API calls
+- Implements an alert system using an object-oriented programming (OOP) approach
+- Incorporates data visualization
+- Maintains a test coverage rate of 90% or higher
+- Monitored using an online monitoring tool
